@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import api from "./services/api";
+import Routes from "./routes";
 
-function App() {
-
-  const [phone, setPhone] = useState([]);
-
-  useEffect(() => {
-    api.get('phones').then(response => {
-      console.log(response.data);
-    })
-  }, []);
-
+export default function App() {
   return (
-    <h1>Hello World</h1>
+    <>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </>
   );
 }
-
-export default App;
