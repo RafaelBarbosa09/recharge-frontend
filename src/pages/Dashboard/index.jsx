@@ -3,12 +3,13 @@ import { Header } from "../../components/Header";
 import Modal from 'react-modal';
 
 import api from "../../services/api";
+import { NewRechargeModal } from "../../components/NewRechargeModal";
 
 Modal.setAppElement('#root');
 
 export default function Dashboard() {
   const [recharges, setRecharges] = useState([]);
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+  const [isNewRechargeModalOpen, setIsNewRechargeModalOpen] = useState(false);
 
   useEffect(() => {
     api.get('rechargs').then(response => {
@@ -16,19 +17,24 @@ export default function Dashboard() {
     })
   }, []);
 
-  function handleOpenNewTransactionModal() {
-    setIsNewTransactionModalOpen(true);
+  function handleOpenNewRechargeModal() {
+    setIsNewRechargeModalOpen(true);
   }
 
-  function handleCloseNewTransactionModal() {
-    setIsNewTransactionModalOpen(false);
+  function handleCloseNewRechargeModal() {
+    setIsNewRechargeModalOpen(false);
   }
 
   return (
     <>
-      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
+      <Header onOpenNewRechargeModal={handleOpenNewRechargeModal} />
 
-      {/* {recharges.map(recharge => (
+      <NewRechargeModal
+        isOpen={isNewRechargeModalOpen}
+        onRequestClose={handleCloseNewRechargeModal}
+      />
+
+      {recharges.map(recharge => (
         <div key={recharge.id}>
           <p>
             {new Intl.NumberFormat('pt-BR', {
@@ -38,7 +44,7 @@ export default function Dashboard() {
           </p>
           <span>{recharge.phone.number}</span>
         </div>
-      ))} */}
+      ))}
     </>
   );
 }

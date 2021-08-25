@@ -5,7 +5,7 @@ export function Header(props) {
     <Container>
       <Content>
         <h1>Recharge App</h1>
-        <button type="button" onClick={props.onOpenNewTransactionModal}>
+        <button type="button" onClick={props.onOpenNewRechargeModal}>
           Nova Recarga
         </button>
       </Content>
