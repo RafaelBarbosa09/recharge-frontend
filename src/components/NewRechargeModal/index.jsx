@@ -2,29 +2,24 @@ import { FormEvent, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
 import closeImg from "../../assets/close.svg";
+import { useRecharges } from '../../hooks/RechargesContext';
 import api from '../../services/api';
 import { Container } from './styles';
 
 
 export function NewRechargeModal(props) {
+  const { createRecharge, phones } = useRecharges();
 
   const [amount, setAmount] = useState(0);
   const [phoneAmount, setPhoneAmount] = useState(0);
-  const [phones, setPhones] = useState([]);
-
-  useEffect(() => {
-    api.get('phones').then(response => {
-      setPhones(response.data);
-    })
-  }, []);
 
   async function handleCreateNewRecharge(event) {
     event.preventDefault();
 
-    await api.post('/rechargs', {
+    await createRecharge({
       amount,
       phone_id: phoneAmount
-    })
+    });
 
     cleanInputs();
     props.onRequestClose();
@@ -49,7 +44,7 @@ export function NewRechargeModal(props) {
       <Container onSubmit={handleCreateNewRecharge}>
         <h2>Ralizar Recarga</h2>
 
-        <select onChange={e => setPhoneAmount(e.target.value)}>
+        <select onChange={e => setPhoneAmount(Number(e.target.value))}>
           <option> </option>
           {phones.map(phone => (
             <option value={phone.id}>{phone.number}</option>

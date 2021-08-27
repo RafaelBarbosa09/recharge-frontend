@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import Modal from 'react-modal';
 
-import api from "../../services/api";
 import { NewRechargeModal } from "../../components/NewRechargeModal";
+import { RechargesProvider } from "../../hooks/RechargesContext";
+import { RechargesTable } from "../../components/RechargesTable";
+import { useState } from "react";
 
 Modal.setAppElement('#root');
 
 export default function Dashboard() {
-  const [recharges, setRecharges] = useState([]);
   const [isNewRechargeModalOpen, setIsNewRechargeModalOpen] = useState(false);
-
-  useEffect(() => {
-    api.get('rechargs').then(response => {
-      setRecharges(response.data);
-    })
-  }, []);
 
   function handleOpenNewRechargeModal() {
     setIsNewRechargeModalOpen(true);
@@ -26,7 +20,7 @@ export default function Dashboard() {
   }
 
   return (
-    <>
+    <RechargesProvider>
       <Header onOpenNewRechargeModal={handleOpenNewRechargeModal} />
 
       <NewRechargeModal
@@ -34,17 +28,7 @@ export default function Dashboard() {
         onRequestClose={handleCloseNewRechargeModal}
       />
 
-      {recharges.map(recharge => (
-        <div key={recharge.id}>
-          <p>
-            {new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL'
-            }).format(recharge.amount)}
-          </p>
-          <span>{recharge.phone.number}</span>
-        </div>
-      ))}
-    </>
+      <RechargesTable />
+    </RechargesProvider>
   );
 }
