@@ -29,7 +29,7 @@ export function CardsArea(props) {
                 cvc={card.code}
                 expiry={card.date}
                 name={card.name}
-                number={card.number}
+                number={Number(card.number)}
               />
             </CardsContent>
           ))}

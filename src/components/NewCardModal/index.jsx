@@ -66,10 +66,9 @@ export function NewCardModal(props) {
         <input className="first-input"
           placeholder="Número"
           name="number"
-          maxLength="16"
           value={number}
           onFocus={handleChangeFocus}
-          onChange={e => setNumber(e.target.value)} />
+          onChange={e => setNumber(Number(e.target.value))} />
 
         <input
           placeholder="Nome"
@@ -92,7 +91,7 @@ export function NewCardModal(props) {
             name="cvc"
             value={cvc}
             onFocus={handleChangeFocus}
-            onChange={e => setCvc(e.target.value)} />
+            onChange={e => setCvc(Number(e.target.value))} />
         </Row>
         <button type="submit">Confirmar</button>
       </Container>

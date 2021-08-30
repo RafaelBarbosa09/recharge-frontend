@@ -42,7 +42,7 @@ export function NewPhoneModal(props) {
         <h2>Cadastrar Telefone</h2>
 
         <InputMask
-          mask="(99)99999-9999"
+          mask="(99) 99999-9999"
           placeholder="Número"
           value={number}
           onChange={e => setNumber(e.target.value)} />
