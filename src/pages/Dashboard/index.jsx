@@ -5,6 +5,7 @@ import { NewRechargeModal } from "../../components/NewRechargeModal";
 import { RechargesProvider } from "../../hooks/RechargesContext";
 import { RechargesTable } from "../../components/RechargesTable";
 import { useState } from "react";
+import { PhonesProvider } from "../../hooks/PhonesContext";
 
 Modal.setAppElement('#root');
 
@@ -21,14 +22,16 @@ export default function Dashboard() {
 
   return (
     <RechargesProvider>
-      <Header onOpenNewRechargeModal={handleOpenNewRechargeModal} />
+      <PhonesProvider>
+        <Header onOpenNewRechargeModal={handleOpenNewRechargeModal} />
 
-      <NewRechargeModal
-        isOpen={isNewRechargeModalOpen}
-        onRequestClose={handleCloseNewRechargeModal}
-      />
+        <NewRechargeModal
+          isOpen={isNewRechargeModalOpen}
+          onRequestClose={handleCloseNewRechargeModal}
+        />
 
-      <RechargesTable />
+        <RechargesTable />
+      </PhonesProvider>
     </RechargesProvider>
   );
 }

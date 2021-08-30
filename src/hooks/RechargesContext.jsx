@@ -22,7 +22,6 @@ export function RechargesProvider(props) {
 
   async function createRecharge(rechargParam) {
     const response = await api.post('/rechargs', rechargParam)
-    console.log(`response --> ${response.data}`)
     
     const recharge = response.data;
 

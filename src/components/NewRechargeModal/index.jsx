@@ -1,14 +1,16 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 
-import closeImg from "../../assets/close.svg";
+import { usePhones } from '../../hooks/PhonesContext';
 import { useRecharges } from '../../hooks/RechargesContext';
-import api from '../../services/api';
+
+import closeImg from "../../assets/close.svg";
 import { Container } from './styles';
 
 
 export function NewRechargeModal(props) {
-  const { createRecharge, phones } = useRecharges();
+  const { createRecharge } = useRecharges();
+  const { phones } = usePhones();
 
   const [amount, setAmount] = useState(0);
   const [phoneAmount, setPhoneAmount] = useState(0);
