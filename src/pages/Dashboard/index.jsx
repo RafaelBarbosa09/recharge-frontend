@@ -9,13 +9,14 @@ import { PhonesProvider } from "../../hooks/PhonesContext";
 import { CardsArea } from "../../components/CardsArea";
 import { NewCardModal } from "../../components/NewCardModal";
 import { CardsProvider } from "../../hooks/CardsContext";
+import { NewPhoneModal } from "../../components/NewPhoneModal";
 
 Modal.setAppElement('#root');
 
 export default function Dashboard() {
   const [isNewRechargeModalOpen, setIsNewRechargeModalOpen] = useState(false);
-
   const [isNewCardModalOpen, setIsNewCardModalOpen] = useState(false);
+  const [isNewPhoneModalOpen, setIsNewPhoneModalOpen] = useState(false);
 
   function handleOpenNewCardModal() {
     setIsNewCardModalOpen(true);
@@ -31,6 +32,14 @@ export default function Dashboard() {
 
   function handleCloseNewRechargeModal() {
     setIsNewRechargeModalOpen(false);
+  }
+
+  function handleOpenNewPhoneModal() {
+    setIsNewPhoneModalOpen(true);
+  }
+
+  function handleCloseNewPhoneModal() {
+    setIsNewPhoneModalOpen(false);
   }
 
   return (
@@ -49,7 +58,12 @@ export default function Dashboard() {
             onRequestClose={handleCloseNewCardModal}
           />
 
-          <CardsArea onOpenNewCardModal={handleOpenNewCardModal} />
+          <NewPhoneModal
+            isOpen={isNewPhoneModalOpen}
+            onRequestClose={handleCloseNewPhoneModal}
+          />
+
+          <CardsArea onOpenNewCardModal={handleOpenNewCardModal} onOpenNewPhoneModal={handleOpenNewPhoneModal} />
 
           <RechargesTable />
         </CardsProvider>

@@ -14,7 +14,7 @@ export function CardsArea(props) {
             Incluir Cartão
           </button>
 
-          <button type="button">
+          <button type="button" onClick={props.onOpenNewPhoneModal}>
             Incluir Número
           </button>
         </ButtonArea>

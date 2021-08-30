@@ -63,15 +63,6 @@ export function NewCardModal(props) {
           number={number}
         />
 
-        {/* <InputMask
-          className="first-input"
-          mask="9999_9999_9999_9999"
-          placeholder="Número"
-          name="number"
-          value={number}
-          onFocus={handleChangeFocus}
-          onChange={e => setNumber(e.target.value)} /> */}
-
         <input className="first-input"
           placeholder="Número"
           name="number"
@@ -88,13 +79,6 @@ export function NewCardModal(props) {
           onChange={e => setName(e.target.value)} />
 
         <Row>
-          {/* <input
-            placeholder="Validade"
-            name="expiry"
-            value={expiry}
-            onFocus={handleChangeFocus}
-            onChange={e => setExpiry(e.target.value)} /> */}
-
           <InputMask
             mask="99/99"
             placeholder="Validade"
