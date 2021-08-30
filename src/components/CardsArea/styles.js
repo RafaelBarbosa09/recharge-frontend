@@ -39,12 +39,13 @@ export const ButtonArea = styled.div`
 
 export const CardsContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export const CardsContent = styled.div`
-  margin: 2rem 0;
-
+  margin: 2rem;
   & + div {
-    margin-left: 2rem;
   }
 `;

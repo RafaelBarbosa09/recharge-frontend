@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import Cards from 'react-credit-cards';
+import InputMask from "react-input-mask";
 
 import closeImg from "../../assets/close.svg";
 import { useCards } from '../../hooks/CardsContext';
@@ -62,9 +63,19 @@ export function NewCardModal(props) {
           number={number}
         />
 
+        {/* <InputMask
+          className="first-input"
+          mask="9999_9999_9999_9999"
+          placeholder="Número"
+          name="number"
+          value={number}
+          onFocus={handleChangeFocus}
+          onChange={e => setNumber(e.target.value)} /> */}
+
         <input className="first-input"
           placeholder="Número"
           name="number"
+          maxLength="16"
           value={number}
           onFocus={handleChangeFocus}
           onChange={e => setNumber(e.target.value)} />
@@ -77,9 +88,16 @@ export function NewCardModal(props) {
           onChange={e => setName(e.target.value)} />
 
         <Row>
-          <input
+          {/* <input
             placeholder="Validade"
-            max="4"
+            name="expiry"
+            value={expiry}
+            onFocus={handleChangeFocus}
+            onChange={e => setExpiry(e.target.value)} /> */}
+
+          <InputMask
+            mask="99/99"
+            placeholder="Validade"
             name="expiry"
             value={expiry}
             onFocus={handleChangeFocus}
