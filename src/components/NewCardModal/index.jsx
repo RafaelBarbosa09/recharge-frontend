@@ -65,6 +65,7 @@ export function NewCardModal(props) {
 
         <input className="first-input"
           placeholder="Número"
+          maxLength="16"
           name="number"
           value={number}
           onFocus={handleChangeFocus}
