@@ -5,18 +5,10 @@ export const RechargesContext = createContext({});
 
 export function RechargesProvider(props) {
   const [recharges, setRecharges] = useState([]);
-  const [phones, setPhones] = useState([]);
 
   useEffect(() => {
     api.get('rechargs').then(response => {
       setRecharges(response.data);
-    })
-  }, []);
-
-
-  useEffect(() => {
-    api.get('phones').then(response => {
-      setPhones(response.data);
     })
   }, []);
 
@@ -29,7 +21,7 @@ export function RechargesProvider(props) {
   }
 
   return (
-    <RechargesContext.Provider value={{ recharges, createRecharge, phones }}>
+    <RechargesContext.Provider value={{ recharges, createRecharge }}>
       {props.children}
     </RechargesContext.Provider>
   );

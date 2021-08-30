@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 4rem;
+  
 `; 
 
 export const Content = styled.div`
   max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem 1rem 8rem;
+  padding: 0 1rem 8rem;
 
   h2 {
     color: var(--text-title);
